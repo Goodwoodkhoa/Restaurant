@@ -1,19 +1,18 @@
 public class Register {
-    public static void calculator(int total, int b, String operator) {
-        String add, subtract, divide, multiply;
-        int result = 0;
+    public static double calculator(double answer, double b, String operator) {
 
         if (operator.equals("add")) {
-            total = total + b;
+            answer = answer + b;
         } else if (operator.equals("subtract")) {
-            total = total - b;
+            answer = answer - b;
         } else if (operator.equals("divide")) {
-            total = total / b;
+            answer = answer / b;
         } else if (operator.equals("multiply")) {
-            total = total * b;
+            answer = answer * b;
         }
 
 
-        System.out.println(result);
+        return answer;
     }
+
 }

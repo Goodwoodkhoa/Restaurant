@@ -12,7 +12,7 @@ public class Restaurant {
         int party;
         Scanner myScan = new Scanner(System.in);
 
-        System.out.println("Wellcome to Khoa's Kitchen!\n" + "How big is your party?");
+        System.out.println("Welcome to Khoa's Kitchen!\n" + "How big is your party?");
         party = myScan.nextInt();
         System.out.println("\nGreat! There is definitely a table for " + party);
 
@@ -29,12 +29,19 @@ public class Restaurant {
             GuestList.add(guest1);
         }
 
+        ArrayList<String> Order = new ArrayList<String>();
+
+        HashMap<String,Double>  Receipt = new HashMap<String,Double>();
+
+
+
 
         System.out.println("Would you like to take a look at our selection?");
         answer = myScan.next();
 
         if (answer.equals("Yes")) {
 
+            System.out.println("Here are our appetizers");
             System.out.println("\nAppetizers:");
             Menu.items("Appetizers");
 
@@ -50,33 +57,52 @@ public class Restaurant {
         }
         System.out.println("\nNow who's name should I put down for the first order?");
         guest2 = myScan.next();
+        type = "";
 
 
         for (int i = 0; i < (party); i++) {
             System.out.println("\nHi " + guest2 + ", what would you like?");
-            type = myScan.nextLine();
-            HashMap<String, Double> receipt = new HashMap<String, Double>();
+            Receipt.clear();
+            total = 0;
 
             while (!type.equals("That's all.")) {
+                System.out.print("Back");
+                myScan.nextLine();
+                //System.out.print("wtf");
                 type = myScan.nextLine();
-                b = Menu.items(type);
+                //System.out.print("Yo");
+                myScan.nextLine();
 
-               // total = Register.calculator(total,b,"add");
-                total = total+b;
-                //receipt.put() //Add items onto list to print all orders!
+                if(!type.equals("That's all.")) {
+                    System.out.print("Sup");
+                    b = Menu.items(type);
+                    Receipt.put(type, b);
+                    System.out.println(Receipt);
+                    //System.out.println("Hello");
 
-                //type = myScan.nextLine();
-                //System.out.print(total);
+                    total = Register.calculator(total, b, "add");
+
+                }
             }
-        //System.out.println("Here's what you ordered" + );
-        System.out.println("Your total is " + total);
-        System.out.println("Who would like to go next?");
-        guest2 = myScan.nextLine();
+
+            System.out.println("Alright " + guest2 +  ", here is your receipt: ");
+
+            for (String Receipt_listed : Receipt.keySet()) {
+                System.out.println("    " + Receipt_listed + " =  $" + Receipt.get(Receipt_listed));
+            }
+
+            System.out.println("Your total is " + total*1.0875);
+
+            if (i<(party-1)) {
+                System.out.println("Who would like to go next?");
+                guest2 = myScan.next();
+            }   else {
+                System.out.println("Thanks so much for stopping by!");
+                return;
+
+            }
 
         }
 
     }
 }
-
-
-

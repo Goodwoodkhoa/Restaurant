@@ -12,7 +12,7 @@ public class Menu {
         entres.add("waffles");
         entres.add("steak and eggs");
         entres.add("chicken and grits");
-        entres.add("spagetthi and meatballs");
+        entres.add("spaghetti and meatballs");
 
         ArrayList<String> desserts = new ArrayList<>();
         desserts.add("ice cream");
@@ -54,16 +54,13 @@ public class Menu {
                 System.out.println(" - " + dessert_prices_listed + " ($" + dessert_prices.get(dessert_prices_listed) + ")");
             }
         } else if (all_prices.containsKey(type)) {
-                System.out.println("Ok, the " + type + " is a great choice.");
-                System.out.println("What else would you like?");
-                //System.out.println(appetizer_prices.get(type));
-                //System.out.println(all_prices.get(type));
-                //System.out.println(appetizer_prices);
-                double b = all_prices.get(type);
-                return b;
-                }
-                double c=0;
-                return c;
+            System.out.println("Ok, the " + type);
+            System.out.println("Anything else?");
+            double b = all_prices.get(type);
+            return b;
+        }
+        double c = 0;
+        return c;
     }
 
 }
